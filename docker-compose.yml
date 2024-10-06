@@ -1,0 +1,25 @@
+services:
+  web:
+    build: ./app/.
+    depends_on:
+      - db 
+    ports:
+      - 5006:5000
+    volumes: 
+      - DB:/app
+
+  db: 
+   image: postgres:13
+   environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=shahad
+      - POSTGRES_PASSWORD=shahad
+      - POSTGRES_DB=test_db
+      - PGDATA=/var/lib/postgresql/data/pgdata
+   volumes:
+      - DB:/var/lib/postgresql/data/pgdata
+   ports: 
+      - 5789:5432
+
+volumes:
+  DB:
