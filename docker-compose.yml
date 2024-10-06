@@ -4,7 +4,7 @@ services:
     depends_on:
       - db 
     ports:
-      - 5006:5000
+      - 5009:5000
     volumes: 
       - DB:/app
 

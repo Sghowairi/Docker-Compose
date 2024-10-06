@@ -1,9 +1,9 @@
-FROM python:3.7
+FROM python
 
-WORKDIR /flask-app
+WORKDIR /app
 
 COPY .  .
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && pip install psycopg2-binary
 
 CMD ["python", "app.py"] 
