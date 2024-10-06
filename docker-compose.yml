@@ -1,14 +1,6 @@
 services:
-  web:
-    build: ./app/.
-    depends_on:
-      - db 
-    ports:
-      - 5009:5000
-    volumes: 
-      - DB:/app
 
-  db: 
+  db:
    image: postgres:13
    environment:
       - POSTGRES_HOST=db
@@ -18,8 +10,17 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
    volumes:
       - DB:/var/lib/postgresql/data/pgdata
-   ports: 
+   ports:
       - 5789:5432
+
+  web:
+    build: ./app
+    depends_on:
+      - db 
+    ports:
+      - 5009:5000
+    volumes: 
+      - DB:/app
 
 volumes:
   DB:
