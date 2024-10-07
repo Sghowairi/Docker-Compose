@@ -14,13 +14,18 @@ services:
       - 5789:5432
 
   web:
-    build: ./app
-    depends_on:
+   build: ./app
+   environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=shahad
+      - POSTGRES_PASSWORD=shahad
+      - POSTGRES_DB=test_db
+   depends_on:
       - db 
-    ports:
+   ports:
       - 5009:5000
-    volumes: 
+   volumes: 
       - DB:/app
 
 volumes:
-  DB:
+   DB:
